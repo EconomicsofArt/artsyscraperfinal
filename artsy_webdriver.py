@@ -119,7 +119,11 @@ password_element.send_keys(Keys.RETURN)
 time.sleep(10)
 
 #list of names
-#names = ['rita-mcbride','matthew-benedict','mona-hatoum','ree-morton']
+names = []
+with open("artist_names.csv", 'r') as file:
+    data = csv.reader(file, delimiter=',')
+    names = sorted(data, key=operator.itemgetter(0))[0]
+
 
 #read csv and make it names array names = .....
 #loop start

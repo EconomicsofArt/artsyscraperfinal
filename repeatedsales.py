@@ -4,9 +4,13 @@ import re
 import numpy as np
 
 #read csv and make it names array names = .....
+names = []
+with open("artist_names.csv", 'r') as file:
+    data = csv.reader(file, delimiter=',')
+    names = sorted(data, key=operator.itemgetter(0))[0]
 
 for name in names:
-  with open("rita-mcbride.csv", 'r') as file:
+  with open(name+".csv", 'r') as file:
     data = csv.reader(file, delimiter=',')
     #sort data on the basis of title
     sdata = sorted(data, key=operator.itemgetter(0))
@@ -117,48 +121,4 @@ for name in names:
   result_df = df2.drop_duplicates()
   print(result_df)
   result_df.to_csv('Repeatedsales.csv', mode='a', index=False, header=False)
-
-  #go through calculate change in ln
-  #if change in ln is 0 or error drop row
-
-
-  #titles_2 = list(df['Titles'].copy())
-  #new_titles = ['']
-  #new_titles = [df['Titles'][i] for i in range(len(df['Titles'])) if df['Titles'][i] == df['Titles'][i + 1]]
-  #ind = 0
-
-  #while (ind < len(titles_2) - 1):
-   # if (titles_2[ind] == (titles_2[ind + 1])):
-    #  if (new_titles[len(new_titles)-1] != titles_2[ind]):
-     #   new_titles.append(titles_2[ind])
-
-
-   # ind+=1
-
-  #print(new_titles)
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # iterate to change the main variable / the title being compared
-    #for row in csvreader:
-     # for column in row:
-  # for row in reader:
-  #         content = list(row[i] for i in included_cols)
-  #         print content
-      #  print(column )
 
