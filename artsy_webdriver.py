@@ -120,7 +120,7 @@ time.sleep(10)
 
 #list of names
 names = []
-with open("artist_names.csv", 'r') as file:
+with open("artist_names_scraping.csv", 'r') as file:
     data = csv.reader(file, delimiter=',')
     names = sorted(data, key=operator.itemgetter(0))[0]
 
@@ -157,7 +157,7 @@ for name in names:
             next_element = driver.find_element(By.XPATH, "//a[@data-testid='next']")
             next_element.click()
             page_count = page_count + 1
-        except NoSuchElementException:
+        except:
             print(final_array)
             print('done scraping for artist:' + name + ', pages: ' + str(page_count))
             file_name = name + ".csv"
