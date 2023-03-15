@@ -137,8 +137,66 @@ with open("AllBeta.csv", 'r') as file:
     alltypez.pop()
     for y in range(0,(len(alltypez))):
         realreturnart.append(alltypez[y]-treasuryzz[y])
+#for only paintings
+with open("betapaintings.csv", 'r') as file:
+    alltypep = csv.reader(file, delimiter=',')
+    alltypezp = []
+    realreturnpaint=[]
+    for col in alltypep:
+        alltypezp.append(float(col[0]))
+    alltypezp.pop()
+    for y in range(0,(len(alltypezp))):
+        realreturnpaint.append(alltypezp[y]-treasuryzz[y])
+#for only sculptures
+with open("betasculptures.csv", 'r') as file:
+    alltypes = csv.reader(file, delimiter=',')
+    alltypezs = []
+    realreturnsculpt=[]
+    for col in alltypes:
+        alltypezs.append(float(col[0]))
+   #alltypezs.pop() do not need since already to 2022
+    for y in range(0,(len(alltypezs))):
+        realreturnsculpt.append(alltypezs[y]-treasuryzz[y])
+#print(realreturnsculpt)
+#print(len(realreturnsculpt))
+with open("consumerindex.csv", 'r') as file:
+    consumer = csv.reader(file, delimiter=',')
+    consumers = []
+    try:
+        for row in consumer:
+            print(row)
+            consumers.append(float(row[2]))
+    except:
+        pass
+
+print(consumers)
+
+
+
+
+
 
 #the array for real returns of dow is realreturnsdow, the real returns of sp is realreturnssp, the real returns for art is realreturnart
+#now we go ahead and make the summary statisticxs
+compdata = pd.DataFrame(
+        {'ALlArtType': realreturnart,
+         'S&P500': realreturnssp,
+         'DOW': realreturnsdow,
+         'Paintings': realreturnpaint,
+         'Sculptures': realreturnsculpt
+         }) #this makes a new pandas dataframe for the charts I want
+matdata = pd.DataFrame(
+        {'ALlArtType': realreturnart,
+         'S&P500': realreturnssp,
+         'DOW': realreturnsdow,
+         'Paintings': realreturnpaint,
+         'Sculptures': realreturnsculpt,
+         'ConsumerIndex':consumers
+         })
+print(compdata.mean())
+print(compdata.std())
+corr_matrix=matdata.corr()
+print(corr_matrix)
 
 
 

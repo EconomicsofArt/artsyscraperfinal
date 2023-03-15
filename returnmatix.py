@@ -4,7 +4,7 @@ import re
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-with open("repeatedsales.csv", 'r') as file:
+with open("paintingrepeatedsales.csv", 'r') as file:
     zdata = csv.reader(file, delimiter=',')
 
     title=[]
@@ -74,15 +74,15 @@ with open("repeatedsales.csv", 'r') as file:
 
         i=i+1
     matrix_ = np.array(matrix)
-   # with open("holdtimematrix.csv", "w", newline="") as f:
-     #   writer = csv.writer(f)
-     #   writer.writerows(matrix_) this writest the matix into a csv
-   # with open('returns.csv', 'w') as f:
-       # f.write(str(returns))
+    with open("holdtimematrixpaintings2.csv", "w", newline="") as f:
+       writer = csv.writer(f)
+       writer.writerows(matrix_) #this writest the matix into a csv
+    with open('returnspaintings2.csv', 'w') as f:
+       f.write(str(returns))
 
         #print(returns) this is a array of returns
-    #print(len(matrix_))
-    #print(len(returns))
+    print(len(matrix_))
+    print(len(returns))
 #create a beta for entirety
 #create separate betas
 print(earliest)
